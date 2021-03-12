@@ -68,5 +68,8 @@ module.exports = {
         })
       }
     }
-  }
+  },
+	server: {
+		host: '0'
+	}
 }
