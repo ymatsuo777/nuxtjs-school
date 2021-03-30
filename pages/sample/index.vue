@@ -1,7 +1,8 @@
 <template>
   <div>
     <div class="title">
-      ユーザー一覧
+      <!-- computed（算出プロパティ）の内容を表示 -->
+      {{ pageTitle }}
     </div>
     <!-- dataで定義した変数の内容を表示 -->
     {{ loginUser }}
@@ -39,11 +40,21 @@ export default {
       users: []
     }
   },
+  // 算出プロパティ
+  // 既存のデータに対して何らかの処理をした結果をデータとして返す
+  computed: {
+    pageTitle() {
+      return `[ ${this.$store.state.sample.pageTitle} ]`
+    }
+  },
   // ライフサイクルフック
   // https://jp.vuejs.org/v2/guide/instance.html#ライフサイクルダイアグラム
   // https://ja.nuxtjs.org/docs/2.x/concepts/nuxt-lifecycle/
   // created ･･･ インスタンスが生成された後にコードを実行
   created() {
+    // storeのsetPageTitleを呼び出し、ページタイトルを設定する
+    this.$store.commit('sample/setPageTitle', 'ユーザー一覧')
+
     this.loginUser = 'サンプルユーザー'
 
     this.users.push({
