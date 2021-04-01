@@ -48,6 +48,8 @@ module.exports = {
   */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
+    // リクエストURLの共通設定
+    baseURL: 'http://127.0.0.1:1234'
   },
 
   /*

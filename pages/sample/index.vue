@@ -21,6 +21,21 @@
     <button @click="changeData">
       ボタン
     </button>
+
+    <br>
+    <br>
+    <br>
+    <div>
+      データ取得サンプル
+    </div>
+
+    <div v-for="u in usersByHttp" :key="u.no" class="list">
+      <UserItem :no="u.no" :name="u.name" />
+    </div>
+
+    <button @click="getData">
+      ボタン
+    </button>
   </div>
 </template>
 
@@ -37,7 +52,8 @@ export default {
   data() {
     return {
       loginUser: '',
-      users: []
+      users: [],
+      usersByHttp: []
     }
   },
   // 算出プロパティ
@@ -75,6 +91,17 @@ export default {
         no: idx + 1,
         name: '追加されたデータ'
       })
+    },
+
+    async getData() {
+      await this.$axios
+        .post('/')
+        .then(response => {
+          this.usersByHttp.push(...response.data)
+        })
+        .catch(err => {
+          alert(`Error!! : ${err}`)
+        })
     }
   }
 }
