@@ -95,7 +95,7 @@ export default {
 
     async getData() {
       await this.$axios
-        .post('/')
+        .get('http://127.0.0.1:1234/')
         .then(response => {
           this.usersByHttp.push(...response.data)
         })
