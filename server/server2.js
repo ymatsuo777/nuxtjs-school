@@ -21,6 +21,6 @@ http.createServer(function (req, res) {
     // レスポンスの中身を出力
     res.end(JSON.stringify(data));
 
-}).listen(1235, '127.0.0.1'); // 127.0.0.1 の 1234番ポートで待機
+}).listen(1235, '0.0.0.0'); // 127.0.0.1 の 1234番ポートで待機
 
 console.log('server running on port 1235');
